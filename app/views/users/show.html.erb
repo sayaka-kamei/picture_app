@@ -1,11 +1,16 @@
 <h1><%= @user.name %>のページ</h1>
+<p  id="notice" ><%= notice %></p> 
+<table>
+  <tr>
+    <th>メールアドレス:</th>
+    <th><strong>Image:</strong></th>
+  </th>  
 
-<p>メールアドレス: <%= @user.email %></P>
 
-<p id="notice"><%= notice %></p>
-
-<P>
-  <strong>Image:</strong>
-  <%= image_tag @user.user_image.url %>
-<p>
-
+  <tr>
+    <td><%= @user.email %></td>
+    <td><%= image_tag @user.user_image.url %></td>
+    <td><%= link_to 'プロフィールを編集する', edit_user_path %></td>
+  </tr>
+ 
+</table>    
