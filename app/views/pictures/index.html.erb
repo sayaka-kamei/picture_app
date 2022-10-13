@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>User name</th>
     <th>Image</th>
     <th>Content</th>
   </tr>
@@ -9,8 +10,10 @@
 
 <% @pictures.each do |picture| %>
   <tr>
+    <%# <td><%= picture.user.name %></td> %>
     <td><%= picture.image %></td>
     <td><%= picture.content %></td>
+    <td><%= link_to '詳細を確認する', picture_path(picture.id) %>
   </tr>
 <% end %>
 </table>
