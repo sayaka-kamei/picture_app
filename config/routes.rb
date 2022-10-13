@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  get '/pictures', to: 'pictures#index'
+  root 'users#new'
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show, :edit, :update]
-  resources :pictures
+  resources :pictures do
+    collection do
+      post :confirm
+    end 
+  end
 end

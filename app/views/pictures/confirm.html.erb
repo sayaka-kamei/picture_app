@@ -1,0 +1,13 @@
+<h3>以下の内容で送信します</h3>
+
+<%= form_with(model: @picture, url: pictures_path,local: true) do |form| %>
+  <%= form.hidden_field :image %>
+  <%= form.hidden_field :content %>
+
+  <p>Image:<%= @picture.image %></p>
+  <p>Content:<%= @picture.content %></p>
+  <%= form.submit "登録する" %>
+
+  <%= link_to 'Back', :back%>
+
+<% end %> 
