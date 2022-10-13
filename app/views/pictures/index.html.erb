@@ -1,0 +1,18 @@
+<h1>Pictures list</h1>
+
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Content</th>
+  </tr>
+
+
+<% @pictures.each do |picture| %>
+  <tr>
+    <td><%= picture.image %></td>
+    <td><%= picture.content %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'New picture post', new_picture_path %>
