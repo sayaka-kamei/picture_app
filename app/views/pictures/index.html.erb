@@ -11,11 +11,11 @@
 <% @pictures.each do |picture| %>
   <tr>
     <%# <td><%= picture.user.name %></td> %>
-    <td><%= picture.image %></td>
+    <td><%= image_tag picture.image.url if picture.image.url %></td>
     <td><%= picture.content %></td>
-    <td><%= link_to '詳細を確認する', picture_path(picture.id) %>
+    <td><%= link_to '詳細を確認する', picture_path(picture.id) %></td>
     <td><%= link_to 'ブログを編集する', edit_picture_path(picture.id), data: { confirm: '本当に編集していいですか？' } %></td>
-      <td><%= link_to 'ブログを削除する', picture_path(picture.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }%></td>
+    <td><%= link_to 'ブログを削除する', picture_path(picture.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }%></td>
   </tr>
 <% end %>
 </table>

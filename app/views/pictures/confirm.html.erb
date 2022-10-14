@@ -1,13 +1,14 @@
 <h3>以下の内容で送信します</h3>
 
-<%= form_with(model: @picture, url: pictures_path,local: true) do |form| %>
-  <%= form.hidden_field :image %>
+<%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
   <%= form.hidden_field :content %>
-
-  <p>Image:<%= @picture.image %></p>
+  <p>Image:<%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></p>
+  <%= form.hidden_field :image_cache %>
   <p>Content:<%= @picture.content %></p>
   <%= form.submit "登録する" %>
-
-  <%= link_to 'Back', :back%>
-
 <% end %> 
+
+<%= form_with(model: @picture, url: new_picture_path, local:true, method:"get") do |form| %>
+  <%= form.hidden_field :image_cache %>
+  <%= link_to 'Back', name: 'back'  %>
+<% end %>

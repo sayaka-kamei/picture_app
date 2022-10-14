@@ -5,7 +5,11 @@ class PicturesController < ApplicationController
   end
 
   def new
-    @picture = Picture.new
+    if params[:back]
+      @picture = Picture.new(picture_params)
+    else
+      @picture = Picture.new
+    end
   end
   
   def create
@@ -48,11 +52,11 @@ class PicturesController < ApplicationController
     @picture = Picture.new(picture_params)
     render :new if @picture.invalid?
   end
-    
+
   private
 
   def picture_params
-    params.require(:picture).permit(:image, :content)
+    params.require(:picture).permit(:image, :image_cache, :content, :user_id)
   end
 
   def set_picture
