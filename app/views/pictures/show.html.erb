@@ -10,5 +10,6 @@
     <%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>  
   <% end %>
 <% end %>
-  
+
 <%= link_to 'Pictures list', pictures_path %>
+<%= link_to 'My favorite list', favorites_path %>
