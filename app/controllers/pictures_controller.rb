@@ -1,4 +1,5 @@
 class PicturesController < ApplicationController
+  before_action :ensure_current_user, {only: [:edit, :update]}
 
   def index
     @pictures = Picture.all
@@ -29,6 +30,13 @@ class PicturesController < ApplicationController
   def show
     @picture = Picture.find(params[:id])
     @favorite = current_user.favorites.find_by(picture_id: @picture.id)
+  end
+
+  def ensure_current_user
+    if current_user.id != params[:id].to_i
+      flash[:notice] = "権限がありません"
+      redirect_to picture_path
+    end
   end
 
   def edit

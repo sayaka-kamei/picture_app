@@ -14,11 +14,13 @@
     <td><%= image_tag picture.image.url if picture.image.url %></td>
     <td><%= picture.content %></td>
     <td><%= link_to '詳細を確認する', picture_path(picture.id) %></td>
-    <td><%= link_to '投稿を編集する', edit_picture_path(picture.id), data: { confirm: '本当に編集していいですか？' } %></td>
-    <td><%= link_to '投稿を削除する', picture_path(picture.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }%></td>
+    <% if picture.user.id == current_user.id %>
+      <td><%= link_to '投稿を編集する', edit_picture_path(picture.id), data: { confirm: '本当に編集していいですか？' } %></td>
+      <td><%= link_to '投稿を削除する', picture_path(picture.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }%></td>
+    <% end %>  
   </tr>
 <% end %>
 </table>
 
-<%= link_to 'New picture post', new_picture_path %>
-<%= link_to 'My favorite list', favorites_path %>
+<%= link_to 'New picture post', new_picture_path, class:"btn" %>
+<%= link_to 'My favorite list', favorites_path, class:"btn" %>
